@@ -1,1 +1,1 @@
-exports.JWT_SECRET = 'secrettreedomtest';
+//removed for security reason

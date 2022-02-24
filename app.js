@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const constants = require('./utils/constants');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use((error, req, res, next) => {
     res.status(status).json({message: message, data: data});
 });
 
-mongoose.connect('mongodb+srv://checco:CHEcol_diurywq29@cluster0.lddrl.mongodb.net/treedomtest_restapi?retryWrites=true&w=majority')
+mongoose.connect(constants.MONGODB_URI)
 .then(result => {
     console.log('connected');
     app.listen(8080);
