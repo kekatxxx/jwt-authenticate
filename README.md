@@ -7,17 +7,29 @@ Si tratta di una REST API su Nodejs, che incarica da un lato di creare i token p
 
 ## Funzionamento
 
-(PUT) /auth/signup
+*(PUT) /auth/signup*
+
 L'utente richiede la creazione dell'account con nome, email, password. Il server crea l'account nel database.
 
-(POST) /auth/login
+*(POST) /auth/login*
+
 L'utente richiede l'autenticazione. Il server controlla le credenziali, se corrette, restituisce un JSON con userId, access token e refresh token, che servirà per la rigenerazione del token in caso sia scaduto.
 
-(POST) /auth/refresh-token
+*(POST) /auth/refresh-token*
+
 Il cliente richiede la rigenerazione dell'accesso token, tramite il refresh token. Il server segna come revocato il refresh token tramite cui si è fatto la richiesta, e genera due nuovi token (access e refresh) restituendoli al client per permettere la continuazione dell'accesso.
 
-(POST) /auth/revoke-token
+*(POST) /auth/revoke-token*
+
 Il cliente richiede la revoca del token, che può essere necessaria se si vuole neutralizzare l'accesso di determinati utenti, per esempio per un elminazione dello stesso o per cambio permessi.
+
+*(GET) /user/name*
+
+Il cliente richiede il valore del campo name.
+
+*(PUT) /user/name*
+
+Il cliente richiede l'aggiornamento del valore del campo name.
 
 ## Dipendenze
 
@@ -26,14 +38,15 @@ Npm:
 npm install
 ```
 
+## Test
+
+Npm:
+```jshelllanguage
+npm run test
+```
+
 ## Installing
 Clonare applicativo
 ```git
-git clone git@git.snaitech.net/common/betbuddy-producer
-```
-
-## Configurazione
-Generare file direttiva.inc per configurare l'ambiente
-```js
-
+git clone https://github.com/kekatxxx/jwt-authenticate
 ```
