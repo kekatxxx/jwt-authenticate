@@ -1,17 +1,13 @@
-const nock = require('nock');
 const axios = require('axios');
 
-test('signup request', async () => {
+it('should signup with response 201', async () => {
     const data = {
-        email: 'testtest@test.com',
+        email: 'test@test.com',
         password: 'test01',
         name:'test'
     };
 
-    nock('http://localhost:8080')
-        .put(`/auth/signup`, data)
-        .reply(201);
-
     let res = await axios.put('http://localhost:8080/auth/signup', data);
-    expect(res.status).toBe(201);
-});
+
+    expect(res.status).toEqual(201);
+ });
